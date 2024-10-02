@@ -7,10 +7,10 @@ function App() {
   const [query, setQuery] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-  const [page, setPage] = useState(1); // For pagination
+  const [page, setPage] = useState(1); 
   const [totalPages, setTotalPages] = useState(1);
 
-  // Fetch characters from the API
+  // Fetch characters
   useEffect(() => {
     const fetchCharacters = async () => {
       setLoading(true);
@@ -22,7 +22,7 @@ function App() {
 
         if (response.ok) {
           setCharacters(data.results);
-          setTotalPages(Math.ceil(data.count / 10)); // Assuming 10 results per page
+          setTotalPages(Math.ceil(data.count / 10)); 
         } else {
           setError('Failed to fetch data');
         }
@@ -49,7 +49,7 @@ function App() {
     <div className="App">
       <h1>Star Wars Characters</h1>
 
-      {/* Search Input */}
+      
       <input 
         type="text" 
         placeholder="Search characters..." 
@@ -59,7 +59,13 @@ function App() {
       />
 
       {/* Loader */}
-      {loading && <div className="loader">Loading...</div>}
+      {/* {loading && <div className="loader">Loading...</div>} */}
+      {loading && 
+      <div class="loader">
+          <span className="bar"></span>
+          <span className="bar"></span>
+          <span className="bar"></span>
+      </div>}
 
       {/* Error Handling */}
       {error && <div className="error-message">{error}</div>}
